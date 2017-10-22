@@ -1,14 +1,14 @@
 import smtplib
 
-email_addresses = ['example@gmail.com',
-                   'example2@gmail.com']  # put your email addresses you want to sent it to here
-gmail_user = 'YOURUSERNAME'         # put the gmail username here
-gmail_password = 'YOURPASSWORD'     # put the gmail password here
+email_addresses = [input(
+    'Fill in email addresses you want to sent to, seperated with commas: ')]  # put your email addresses you want to sent it to here
+gmail_user = input('Your gmail username: ')  # put the gmail username here
+gmail_password = input('Your gmail password: ')  # put the gmail password here
 
 sent_from = gmail_user
 to = email_addresses
-subject = 'Hu Site informatie'      # put the subject text here
-body = 'De site is up!'             # put the body text here
+subject = 'HU site information'  # put the subject text here
+body = 'The HU site is UP!'  # put the body text here
 
 email_text = """\
 From: %s  

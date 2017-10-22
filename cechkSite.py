@@ -1,8 +1,8 @@
 import requests, time, checkSiteMail
 
 payload = {
-    'username': 'USERNAME',  # fill in your HU username
-    'password': 'PASSWORD'  # fill in your HU password
+    'username': input('HU username: '),  # fill in your HU username
+    'password': input('HU password: ')  # fill in your HU password
 }
 
 headers = {
@@ -14,11 +14,11 @@ with requests.Session() as session:
                          cookies=cookie)  # login
 
     site = session.post(
-        'https://cursussen.sharepoint.hu.nl/fnt/53/TICT-V1PROG-15')  # open session to the site you want to check
+        'https://cursussen.sharepoint.hu.nl/fnt/53/TICT-V1PROG-15')  # open session to HU site you want to check
     while True:
         if site.text == 'Cannot connect to the configuration database.':  # in my case the site said this if it was offline. Put what your offline site says here
-            time.sleep(300)     # wait for 5 minutes, because it could cause a overload
-            site = session.post('https://cursussen.sharepoint.hu.nl/fnt/53/TICT-V1PROG-15')     # try again
+            time.sleep(300)  # wait for 5 minutes, because it could cause a overload
+            site = session.post('https://cursussen.sharepoint.hu.nl/fnt/53/TICT-V1PROG-15')  # try again
         else:
-            checkSiteMail.mail()        # if it is online, send email
+            checkSiteMail.mail()  # if it is online, send email
             break
