@@ -1,7 +1,7 @@
 import requests, time, checkSiteMail
 
 payload = {
-    'username': input('HU username: '),  # fill in your HU username
+    'username': input('HU username'),  # fill in your HU username
     'password': input('HU password: ')  # fill in your HU password
 }
 
