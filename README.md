@@ -6,4 +6,4 @@ The problem was, I had to login to check if it was up. With this script you can 
 I hope I can help some other students with this too
 
 IMPORTANT NOTE: if you want the mail function to work, you need to enable this in gmail https://www.google.com/settings/security/lesssecureapps
-So make sure you have a STRONG password
+So make sure you have a STRONG passwor
