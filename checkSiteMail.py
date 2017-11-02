@@ -1,11 +1,15 @@
 import smtplib
 import getpass
+import sys
 
-email_addresses = [input(
+
+try:
+    email_addresses = [input(
     'Fill in email addresses you want to sent to, seperated with commas: ')]  # put your email addresses you want to sent it to here
-gmail_user = input('Your gmail username: ')  # put the gmail username here
-gmail_password = getpass.getpass('Your gmail password: ')  # put the gmail password here
-
+    gmail_user = input('Your gmail username: ')  # put the gmail username here
+    gmail_password = getpass.getpass('Your gmail password: ')  # put the gmail password here
+except KeyboardInterrupt:
+    sys.exit('Closing...')
 sent_from = gmail_user
 to = email_addresses
 subject = 'HU site information'  # put the subject text here
