@@ -1,9 +1,10 @@
 import smtplib
+import getpass
 
 email_addresses = [input(
     'Fill in email addresses you want to sent to, seperated with commas: ')]  # put your email addresses you want to sent it to here
 gmail_user = input('Your gmail username: ')  # put the gmail username here
-gmail_password = input('Your gmail password: ')  # put the gmail password here
+gmail_password = getpass.getpass('Your gmail password: ')  # put the gmail password here
 
 sent_from = gmail_user
 to = email_addresses
@@ -11,8 +12,8 @@ subject = 'HU site information'  # put the subject text here
 body = 'The HU site is UP!'  # put the body text here
 
 email_text = """\
-From: %s  
-To: %s  
+From: %s
+To: %s
 Subject: %s
 
 %s

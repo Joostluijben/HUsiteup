@@ -1,8 +1,9 @@
 import requests, time, checkSiteMail
+import getpass
 
 payload = {
-    'username': input('HU username: '),  # fill in your HU username
-    'password': input('HU password: ')  # fill in your HU password
+    'username': input('HU username: '),  # fill in your HU   username
+    'password': getpass.getpass(prompt='HU password: ')  # fill in your HU password
 }
 
 headers = {
