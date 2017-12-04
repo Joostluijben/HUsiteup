@@ -1,11 +1,15 @@
-import requests, time, checkSiteMail
+import requests
+import time
 import getpass
 import sys
 
+HUusername = input('HU username: ')
+HUpassword = getpass.getpass(prompt='HU password: ')
+
 try:
     payload = {
-        'username': input('HU username: '),  # fill in your HU   username
-        'password': getpass.getpass(prompt='HU password: ')  # fill in your HU password
+        'username': HUusername,  # fill in your HU   username
+        'password': HUpassword# fill in your HU password
         }
 except KeyboardInterrupt:
     sys.exit('Closing....')
@@ -19,12 +23,17 @@ try:
                          cookies=cookie)  # login
         site = session.post(
         'https://cursussen.sharepoint.hu.nl/fnt/53/TICT-V1PROG-15')  # open session to HU site you want to check
+        error = input('give the exact error message showing on the site: ')
         while True:
-            if site.text == 'Cannot connect to the configuration database.':  # in my case the site said this if it was offline. Put what your offline site says here
+            if site.text == error:  # in my case the site said this if it was offline. Put what your offline site says here
+                print('Site is still not up... Trying again in 5 minutest.')
                 time.sleep(300)  # wait for 5 minutes, because it could cause a overload
                 site = session.post('https://cursussen.sharepoint.hu.nl/fnt/53/TICT-V1PROG-15')  # try again
             else:
+                import checkSiteMail
                 checkSiteMail.mail()  # if it is online, send email
                 break
 except requests.exceptions.RequestException:
     print('Oops, maybe you typed the wrong password or username?')
+except KeyboardInterrupt:
+    print('Closing...')
